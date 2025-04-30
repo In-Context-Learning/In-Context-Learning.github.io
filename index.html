@@ -1,1 +1,118 @@
-print("html")
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ArticuBot</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="./static/css/academicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+
+<body>
+
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+
+
+                        <h1 class="title is-1 publication-title">
+                            In-context Imitation Learning for Articulated Object Manipulation
+                        </h1>
+                        <!-- <h3 class="title is-4 conference-authors"><a target="_blank" href="https://icml.cc/">ICML 2023</a>
+                    </h3> -->
+                        
+
+                    
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="padding: 0">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <video poster="" id="" autoplay controls loop width="100%" playbackRate=2.0 style="border-radius: 5px;">
+                    <source src="assets/website-demo-no-voice.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p style="font-size: 125%">
+                            Robotics manipulation of articulated objects has long been challenging due to the large variation of shapes, geometries, and articulation types of such objects. 
+                            Although much prior work has attempted to learn a policy for manipulating such objects, such policies will often have failures when tested with out-of-distribution  objects not seen during training. 
+                            In this paper, we explore in-context imitation learning for quick adaption of a manipulation policy for articulated object manipulation.
+                            At the test-time, we provide an additional demonstration as input to the policy;
+                            we condition the policy on this additional  demonstration so it can adapt to output correct actions. 
+                            We explore several architectural design choices of how to condition the policy on an additional demonstration. 
+                            To reduce the burden of teleoperating the robot to obtain the demonstration in the real world, we instead use a human demonstration, and we develop a system to transfer it to the robot policy. 
+                            By using a single additional demonstration for each articulated object, our method improves the performance in simulation by 12.4\% on previously low-performing objects, and leads to 27\% improvement in performance when tested on challenging real-world objects. 
+<br>
+<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<script>
+
+  timeoutIds = [];
+
+  function typeWriter(txt, i, q, num, text1, text2) {
+      var imgText = document.getElementById(text1 + num);
+      var answer = document.getElementById(text2 + num);
+      if (imgText.innerHTML == q) {
+          for (let k = 0; k < 5; k++) {
+              if (i < txt.length) {
+                  if (txt.charAt(i) == "\\") {
+                      answer.innerHTML += "\n";
+                      i += 1;
+                  } else {
+                      answer.innerHTML += txt.charAt(i);
+                  }
+                  i++;
+              }
+          }
+          hljs.highlightAll();
+          timeoutIds.push(setTimeout(typeWriter, 1, txt, i, q, num, text1, text2));
+      }
+  }
+
+</script>
+
+</html>
