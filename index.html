@@ -90,7 +90,7 @@
                         <!-- <img src="assets/pipeline.m4v" class="interpolation-image" alt=""
                             style="display: block; margin-left: auto; margin-right: auto; max-width: 80%;" /> -->
                             <video autoplay controls muted loop playsinline height="100%">
-                              <source src="assets/overview-and-real-robot-results_Cropped.mp4"
+                              <source src="assets/overview-and-real-robot-results_including_hand.mp4"
                                       type="video/mp4">
                             </video>
                         <br>
@@ -100,7 +100,9 @@
                         <br>
                         <span style="font-weight: bold">Network Architecture</span>: The policy network architecture takes as input current observation and demonstation as input. The current observation includes point cloud of the object besides the current EEF position. The demonstration includes the object point cloud in a different orientation along with the grasping and the opening EEF points in this different orientation. 
                         The current observation and the demonstration are then concatenated and passed to a Weighted Displacemene Model derived from prior work. The weighted displacement model outputs per point displacements and per point weights which are then aggregated to predict the subgoal EEF points. 
-
+                        <br>
+                        <span style="font-weight: bold">Human Demonstration in the real world</span>: We record the human demonstration as an RGBD image the real world and convert it to the robot EEF points. We first apply WiloR, a state of the art hand detection method to detect the human hand. We also use SAM to segment the human hand in the image. 
+                        The WiloR hand mask is accurate but the predicted depth might be wrong. We scale the WiloR predicted depth with the real depth from the depth camera, which gives us an aligned hand mesh with the object from which we calculate the position and the orientation of the hand. Finally we convert this to the robot EEF points.  
                         </p>
                         </div>
                 </div>
@@ -148,87 +150,139 @@
   <div class="columns is-centered is-multiline">
 
 
-    <div class="column is-half" style="padding-left: 2px; padding-right: 2px;">
+    <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
         <div class="content" style="display: flex; flex-direction: column; align-items: center;">
             <video autoplay controls muted loop playsinline style="max-width: 80%;">
             <source src="./assets/articubot_Cropped_SpeedUp_nsh4-oven.mp4"
                     type="video/mp4">
             </video>
-            <p style="text-align:center; width: 80%;">Articubot opening Oven</p>
+            <p style="text-align:center; width: 80%;">Articubot fails to grasp the handle</p>
         </div>
     </div>
 
-    <div class="column is-half" style="padding-left: 2px; padding-right: 2px;">
+    <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
     <div class="content" style="display: flex; flex-direction: column; align-items: center;">
         <video autoplay controls muted loop playsinline style="max-width: 80%;">
-        <source src="./assets/ours_Cropped_SpeedUp-nsh4-oven_speedup.mp4"
+        <source src="./assets/DemoNsh_Oven.mp4"
                 type="video/mp4">
         </video>
-        <p style="text-align:center; width: 80%;">Our method opening Oven</p>
+        <p style="text-align:center; width: 80%;">Oven Demo collected</p>
     </div>
     </div>
+
+    <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
+      <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+          <video autoplay controls muted loop playsinline style="max-width: 80%;">
+          <source src="./assets/ours_Cropped_SpeedUp-nsh4-oven_speedup.mp4"
+                  type="video/mp4">
+          </video>
+          <p style="text-align:center; width: 80%;">Our method opening Oven</p>
+      </div>
+      </div>
+
+
+
+
     
-    <div class="column is-half" style="padding-left: 2px; padding-right: 2px;">
+    <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
     <div class="content" style="display: flex; flex-direction: column; align-items: center;">
         <video autoplay controls muted loop playsinline style="max-width: 80%;">
         <source src="./assets/articubot-fail-1_Cropping_SpeedUp_nsha_cabinet.mp4"
                 type="video/mp4">
         </video>
-        <p style="text-align:center; width: 80%;">Articubot opening Cabinet</p>
+        <p style="text-align:center; width: 80%;">Articubot fails to grasp</p>
     </div>
     </div>
 
 
       
-    <div class="column is-half" style="padding-left: 2px; padding-right: 2px;">
+    <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
     <div class="content" style="display: flex; flex-direction: column; align-items: center;">
         <video autoplay controls muted loop playsinline style="max-width: 80%;">
-        <source src="./assets/ours-partially-open_Cropped_SpeedUp-nsh-a-cabinet.mp4"
+        <source src="./assets/Demo_NSH_Cabinet.mp4"
                 type="video/mp4">
         </video>
-        <p style="text-align:center; width: 80%;">Our method opening Cabinet</p>
+        <p style="text-align:center; width: 80%;">Cabinet 1 Demo</p>
     </div>
     </div>
 
+    <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
+      <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+          <video autoplay controls muted loop playsinline style="max-width: 80%;">
+          <source src="./assets/ours-partially-open_Cropped_SpeedUp-nsh-a-cabinet.mp4"
+                  type="video/mp4">
+          </video>
+          <p style="text-align:center; width: 80%;">Our method opening Cabinet 1</p>
+      </div>
+      </div>
+
+
+
+      
 
 
 
 
-    <div class="column is-half" style="padding-left: 2px; padding-right: 2px;">
+
+    <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
     <div class="content" style="display: flex; flex-direction: column; align-items: center;">
         <video autoplay controls muted loop playsinline style="max-width: 80%;">
         <source src="./assets/articubot-failure-2_Cropped_SpeedUp-robolounge-cabinet.mp4"
                 type="video/mp4">
         </video>
-        <p style="text-align:center; width: 80%;">Articubot Opening cabinet</p>
+        <p style="text-align:center; width: 80%;">Articubot fails to grasp</p>
     </div>
     </div> 
 
-    <div class="column is-half" style="padding-left: 2px; padding-right: 2px;">
+    <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
     <div class="content" style="display: flex; flex-direction: column; align-items: center;">
         <video autoplay controls muted loop playsinline style="max-width: 80%;">
-        <source src="./assets/ours-1_Cropped_SpeedUp-robo-cabinet.mp4"
+        <source src="./assets/demo_Robo_Cabinet_Blurred.mp4"
                 type="video/mp4">
         </video>
-        <p style="text-align:center; width: 80%;">Our method opening cabinet</p>
+        <p style="text-align:center; width: 80%;">Cabinet 2 Demo</p>
     </div>
     </div> 
+
+    <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
+      <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+          <video autoplay controls muted loop playsinline style="max-width: 80%;">
+          <source src="./assets/ours-1_Cropped_SpeedUp-robo-cabinet.mp4"
+                  type="video/mp4">
+          </video>
+          <p style="text-align:center; width: 80%;">Our method opening cabinet 2</p>
+      </div>
+      </div> 
+
+
+
+
 
 
 
 
     
-    <div class="column is-half" style="padding-left: 2px; padding-right: 2px;">
+    <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
         <div class="content" style="display: flex; flex-direction: column; align-items: center;">
           <video autoplay controls muted loop playsinline style="max-width: 80%;">
             <source src="./assets/Articubot_1_SpeedUp.mp4"
                     type="video/mp4">
           </video>
-          <p style="text-align:center; width: 80%;">Articubot opening drawer</p>
+          <p style="text-align:center; width: 80%;">Articubot fails to grasp</p>
         </div>
       </div> 
 
-    <div class="column is-half" style="padding-left: 2px; padding-right: 2px;">
+    <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
+      <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+        <video autoplay controls muted loop playsinline style="max-width: 80%;">
+          <source src="./assets/Demo_Robo_Top_Drawer.mp4"
+                  type="video/mp4">
+        </video>
+        <p style="text-align:center; width: 80%;">Drawer Demo</p>
+      </div>
+    </div>  
+
+    <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
       <div class="content" style="display: flex; flex-direction: column; align-items: center;">
         <video autoplay controls muted loop playsinline style="max-width: 80%;">
           <source src="./assets/Our_Method_1_Cropped.mp4"
@@ -236,7 +290,7 @@
         </video>
         <p style="text-align:center; width: 80%;">Our method opening drawer</p>
       </div>
-    </div>  
+    </div> 
     
     
   </div>
@@ -262,17 +316,27 @@
     <br>
   
       <div class="columns is-centered is-multiline">
-        <div class="column is-half" style="padding-left: 2px; padding-right: 2px;">
+        <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
           <div class="content" style="display: flex; flex-direction: column; align-items: center;">
             <video autoplay controls muted loop playsinline style="max-width: 100%;">
               <source src="./assets/Articubot_1_Cropped_fridge_speedup.mp4"
                       type="video/mp4">
             </video>
-            <p style="text-align:center; width: 100%;">Articubot Opening table top toy fridge</p>
+            <p style="text-align:center; width: 100%;">Articubot fails to grasp</p>
           </div>
         </div>
 
-        <div class="column is-half" style="padding-left: 2px; padding-right: 2px;">
+        <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+            <video autoplay controls muted loop playsinline style="max-width: 100%;">
+              <source src="./assets/demo_toy_fridge.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center; width: 100%;">Toy Fridge Demo</p>
+          </div>
+        </div>  
+
+        <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
           <div class="content" style="display: flex; flex-direction: column; align-items: center;">
             <video autoplay controls muted loop playsinline style="max-width: 100%;">
               <source src="./assets/Our_1_Cropped_fridge_speedup.mp4"
@@ -280,26 +344,37 @@
             </video>
             <p style="text-align:center; width: 100%;">Our method opening table top toy fridge</p>
           </div>
-        </div>  
+        </div>
+        
 
 
 
 
 
 
-        <div class="column is-half" style="padding-left: 2px; padding-right: 2px;">
+        <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
             <div class="content" style="display: flex; flex-direction: column; align-items: center;">
               <video autoplay controls muted loop playsinline style="max-width: 100%;">
                 <source src="./assets/3_layer_Articubot_2_Cropped_SppedUp.mp4"
                         type="video/mp4">
               </video>
-              <p style="text-align:center; width: 100%;">Articubot opening 3 layered cabinet</p>
+              <p style="text-align:center; width: 100%;">Articubot graps but fails to open</p>
             </div>
           </div> 
 
 
 
-        <div class="column is-half" style="padding-left: 2px; padding-right: 2px;">
+        <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+            <video autoplay controls muted loop playsinline style="max-width: 100%;">
+              <source src="./assets/demo_3_layered_cabinet.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center; width: 100%;">3 layered cabinet Demo</p>
+          </div>
+        </div> 
+        
+        <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
           <div class="content" style="display: flex; flex-direction: column; align-items: center;">
             <video autoplay controls muted loop playsinline style="max-width: 100%;">
               <source src="./assets/3_layer_Cabinet_Our_2_Cropped_SpeedUp.mp4"
@@ -307,24 +382,34 @@
             </video>
             <p style="text-align:center; width: 100%;">Our method opening 3 layered cabinet</p>
           </div>
-        </div>  
+        </div>
 
 
 
 
 
 
-        <div class="column is-half" style="padding-left: 2px; padding-right: 2px;">
+        <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
           <div class="content" style="display: flex; flex-direction: column; align-items: center;">
             <video autoplay controls muted loop playsinline style="max-width: 100%;">
               <source src="./assets/White_Drawer_Articubot_Baseline_Cropped_Speedup.mp4"
                       type="video/mp4">
             </video>
-            <p style="text-align:center; width: 100%;">Articubot opening white drawer</p>
+            <p style="text-align:center; width: 100%;">Articubot fails to open fully due to wrong opening predictions</p>
           </div>
         </div>  
 
-        <div class="column is-half" style="padding-left: 2px; padding-right: 2px;">
+        <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+            <video autoplay controls muted loop playsinline style="max-width: 100%;">
+              <source src="./assets/demo_white_drawer.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center; width: 100%;">White Drawer Demo</p>
+          </div>
+        </div>  
+
+        <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
           <div class="content" style="display: flex; flex-direction: column; align-items: center;">
             <video autoplay controls muted loop playsinline style="max-width: 100%;">
               <source src="./assets/White_Drawer_From_GIF.mp4"
@@ -332,7 +417,7 @@
             </video>
             <p style="text-align:center; width: 100%;">Our method opening white drawer</p>
           </div>
-        </div>  
+        </div> 
 
 
 
@@ -340,17 +425,27 @@
 
 
 
-        <div class="column is-half" style="padding-left: 2px; padding-right: 2px;">
+        <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
           <div class="content" style="display: flex; flex-direction: column; align-items: center;">
             <video autoplay controls muted loop playsinline style="max-width: 100%;">
               <source src="./assets/Articubot_Baseline_Knob_Cabinet_Cropped_Speedup.mp4"
                       type="video/mp4">
             </video>
-            <p style="text-align:center; width: 100%;">Articubot opening knob cabinet</p>
+            <p style="text-align:center; width: 100%;">Articubot partially opens knob cabinet</p>
           </div>
         </div>  
 
-        <div class="column is-half" style="padding-left: 2px; padding-right: 2px;">
+        <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+            <video autoplay controls muted loop playsinline style="max-width: 100%;">
+              <source src="./assets/demo_knob_cabinet.mp4"
+                      type="video/mp4">
+            </video>
+            <p style="text-align:center; width: 100%;">Knob Cabinet Demo</p>
+          </div>
+        </div>  
+
+        <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
           <div class="content" style="display: flex; flex-direction: column; align-items: center;">
             <video autoplay controls muted loop playsinline style="max-width: 100%;">
               <source src="./assets/In_Context_Learning_Knob_Cabinet_Cropped_Speedup.mp4"
@@ -358,7 +453,7 @@
             </video>
             <p style="text-align:center; width: 100%;">Our method opening knob cabinet</p>
           </div>
-        </div>  
+        </div> 
 
 
 
@@ -366,25 +461,35 @@
 
 
 
-        <div class="column is-half" style="padding-left: 2px; padding-right: 2px;">
+        <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
           <div class="content" style="display: flex; flex-direction: column; align-items: center;">
             <video autoplay controls muted loop playsinline style="max-width: 100%;">
-              <source src="./assets/Oven_from_GIF.mp4"
+              <source src="./assets/Articubot_Baseline_Toy_Oven.mp4"
                       type="video/mp4">
             </video>
-            <p style="text-align:center; width: 100%;">Articubot Opening Table top toy oven</p>
+            <p style="text-align:center; width: 100%;">Articubot partially opening the Toy Oven due to wrong prediction</p>
           </div>
         </div>  
 
-        <div class="column is-half" style="padding-left: 2px; padding-right: 2px;">
+        <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
         <div class="content" style="display: flex; flex-direction: column; align-items: center;">
             <video autoplay controls muted loop playsinline style="max-width: 100%;">
-            <source src="./assets/Oven_from_GIF.mp4"
+            <source src="./assets/Demo_Oven.mp4"
                     type="video/mp4">
             </video>
-            <p style="text-align:center; width: 100%;">Our method Opening Table top toy oven</p>
+            <p style="text-align:center; width: 100%;">Toy Oven Demo</p>
         </div>
         </div> 
+
+        <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
+          <div class="content" style="display: flex; flex-direction: column; align-items: center;">
+              <video autoplay controls muted loop playsinline style="max-width: 100%;">
+              <source src="./assets/Oven_from_GIF.mp4"
+                      type="video/mp4">
+              </video>
+              <p style="text-align:center; width: 100%;">Our method Opening Table top toy oven</p>
+          </div>
+          </div> 
         
       </div>
     </section>
@@ -415,7 +520,8 @@
                   <img src="assets/demo_3_layered_cabinet.png" width="10%" height="auto" style="border-radius: 10px; margin: 5px; object-fit: cover; aspect-ratio: 1/1;" alt='3 layered Cabinet Demo' onclick="populateDemo(this, 1);">
                   <img src="assets/demo_white_drawer.png" width="10%" height="auto" style="border-radius: 10px; margin: 5px; object-fit: cover; aspect-ratio: 1/1;" alt='White Drawer Demo' onclick="populateDemo(this, 1);">
                   <img src="assets/demo_knob_cabinet.png" width="10%" height="auto" style="border-radius: 10px; margin: 5px; object-fit: cover; aspect-ratio: 1/1;" alt='Knob Cabinet Demo' onclick="populateDemo(this, 1);">
-              </div>
+                  <img src="assets/Demo_Oven.png" width="10%" height="auto" style="border-radius: 10px; margin: 5px; object-fit: cover; aspect-ratio: 1/1;" alt='Toy Oven Demo' onclick="populateDemo(this, 1);">
+                </div>
           </div>
           
             <!-- Video Player -->
