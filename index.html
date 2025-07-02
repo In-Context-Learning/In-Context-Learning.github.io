@@ -75,8 +75,86 @@
 
 
 
+    <section class="section">
+      <div class="container is-max-widescreen">
+
+    
+    <div class="rows is-centered ">
+      <div class="row is-full-width">
+          <h2 class="title is-3"><span class="dvima" style="color: red;">Opening different door of the same object conditioned on different demonstrations </span></h2>
+      </div>
+      </div>
+
+      <br>
+      <p style="font-size: 125%">
+        By conditioning on a human demonstration to open the left door, the robot can open the left door of the two-door cabinet.
+      </p>
+      <br>
+
+      <div class="columns is-centered is-multiline">
+
+      <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
+        <img src="assets/two-door-cabinet-1_Grasp_Demo_cropped.png" width="100%" height="auto" style="border-radius: 10px; margin: 5px; object-fit: cover; aspect-ratio: 1/1;" alt='Oven Demo' onclick="populateDemo(this, 1);">
+    </div>
+  
+    <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
+      <img src="assets/two-door-cabinet-1_Open_Demo_cropped.png" width="100%" height="auto" style="border-radius: 10px; margin: 5px; object-fit: cover; aspect-ratio: 1/1;" alt='Oven Demo' onclick="populateDemo(this, 1);">
+    </div>
+  
+    <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
+      <img src="assets/two-door-cabinet-2.gif" width="100%" height="auto" style="border-radius: 10px; margin: 5px; object-fit: cover; aspect-ratio: 1/1;" alt='Oven Demo' onclick="populateDemo(this, 1);">
+      </div>
+    </div>
+
+  
+      <p style="font-size: 125%">
+        By conditioning on a human demonstration to open the right door, the robot can open the right door of the two-door cabinet.
+      </p>
+
+      <div class="columns is-centered is-multiline">
+
+        <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
+          <img src="assets/two-door-cabinet-2_Grasp_Demo_cropped.png" width="100%" height="auto" style="border-radius: 10px; margin: 5px; object-fit: cover; aspect-ratio: 1/1;" alt='Oven Demo' onclick="populateDemo(this, 1);">
+      </div>
+    
+      <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
+        <img src="assets/two-door-cabinet-2_Open_Demo_cropped.png" width="100%" height="auto" style="border-radius: 10px; margin: 5px; object-fit: cover; aspect-ratio: 1/1;" alt='Oven Demo' onclick="populateDemo(this, 1);">
+      </div>
+    
+      <div class="column is-one-third" style="padding-left: 2px; padding-right: 2px;">
+        <img src="assets/two-door-cabinet-1.gif" width="100%" height="auto" style="border-radius: 10px; margin: 5px; object-fit: cover; aspect-ratio: 1/1;" alt='Oven Demo' onclick="populateDemo(this, 1);">
+        </div>
+      </div>
+
+  </div>
 
 
+  <section class="section">
+    <div class="container is-max-widescreen">
+
+  
+  <div class="rows is-centered ">
+    <div class="row is-full-width">
+        <h2 class="title is-3"><span class="dvima" style="color: red;">Robustness of our method to errors in the hand pose estimation </span></h2>
+    </div>
+    </div>
+
+    <br>
+    <p style="font-size: 125%">
+      We conducted simulation experiments by injecting varying levels of noise into the demonstration end-effector points (to approximate the real-world 
+      hand estimation error), and test the policy's performance. 
+
+      We found that our policy maintains strong performance with up to 8 cm error in translation and 45 degrees error in rotation.
+    </p>
+    <br>
+
+    <div class="columns">
+      <div class="column is-full-width" style="display: flex; flex-wrap: wrap; justify-content: center;">
+        <img src="assets/translation_error.png" width="100%" height="auto" style="border-radius: 10px; margin: 5px;" alt='Oven Demo' onclick="populateDemo(this, 1);">
+        <img src="assets/rotation_error.png" width="100%" height="auto" style="border-radius: 10px; margin: 5px;" alt='Oven Demo' onclick="populateDemo(this, 1);">
+      </div>
+  </div>
+</div>
 
 
 
