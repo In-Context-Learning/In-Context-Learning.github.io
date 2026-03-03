@@ -123,7 +123,7 @@ Videos and code can be found on our \href{https://in-context-learning.github.io/
                         <br>
 
                         <p style="font-size: 125%">
-                          <span style="font-weight: bold">Overview</span>: Given an unseen object, a demonstration of opening the object is provided as an additional input to the policy. The policy is then conditioned on this incontext demonstration to successfully manipulate the unseen object. 
+                          <span style="font-weight: bold">Overview</span>: Given an unseen object, a demonstration of opening the object is provided as an additional input to the policy. The policy is then conditioned on this test-time demonstration to successfully manipulate the unseen object. 
                         <br>
                         <span style="font-weight: bold">Network Architecture</span>: The policy network architecture takes as input current observation and demonstation as input. The current observation includes point cloud of the object besides the current EEF position. The demonstration includes the object point cloud in a different orientation along with the grasping and the opening EEF points in this different orientation. 
                         The current observation and the demonstration are then concatenated and passed to a Weighted Displacemene Model derived from prior work. The weighted displacement model outputs per point displacements and per point weights which are then aggregated to predict the subgoal EEF points. 
